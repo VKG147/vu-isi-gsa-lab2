@@ -1,0 +1,42 @@
+﻿<Window x:Class="Lab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab2"
+        mc:Ignorable="d"
+        Title="VAudioPlot" Height="530" Width="1000"
+        ResizeMode="NoResize">
+    <Border Height="592" VerticalAlignment="Top">
+        <Grid Margin="0,0,0,55">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="221*"/>
+                <ColumnDefinition Width="579*"/>
+            </Grid.ColumnDefinitions>
+            <Label Margin="10,10,10,0" Grid.Column="0" Height="26" VerticalAlignment="Top">Current audio file:</Label>
+            <Label Name="loadedFileLabel" Margin="10,41,10,0" Grid.Column="0" Height="26" VerticalAlignment="Top">file.wav</Label>
+            <Button Name="btnOpenFile" Margin="26,12,0,0" Click="btnOpenFile_Click" Height="22" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="92">Browse</Button>
+            <Label Margin="165,8,478,0" Height="23" VerticalAlignment="Top" Grid.Column="1">Marker at:</Label>
+            <TextBox Name="txtboxMarkerTime" Margin="256,13,387,0" VerticalAlignment="Top" Grid.Column="1" TextChanged="txtboxMarkerTime_TextChanged"/>
+            <ComboBox Name="comboTimeUnit" Margin="350,13,0,0" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="113" SelectionChanged="comboTimeUnit_SelectionChanged">
+                <ComboBoxItem Content="milliseconds"></ComboBoxItem>
+                <ComboBoxItem Content="seconds" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="minutes"></ComboBoxItem>
+            </ComboBox>
+            <CheckBox Name="channel1Checkbox" Grid.Column="1" Margin="188,49,457,0" IsEnabled="False" Checked="channel1Checkbox_Checked" Unchecked="channel1Checkbox_Unchecked" Height="18" VerticalAlignment="Top"></CheckBox>
+            <Label Grid.Column="1" Margin="205,43,450,0" VerticalAlignment="Top" Content="channel1"></Label>
+            <CheckBox Name="channel2Checkbox" Grid.Column="1" VerticalAlignment="Top" Margin="304,49,341,0" IsEnabled="False"/>
+            <Label Grid.Column="1" Margin="321,43,282,0" VerticalAlignment="Top" Content="channel2"/>
+            <CheckBox Name="segmentCheckbox" Margin="534,21,112,0" IsEnabled="True" IsChecked="False" Height="18" VerticalAlignment="Top" Unchecked="segmentCheckbox_Unchecked" Checked="segmentCheckbox_Checked" Grid.Column="1"/>
+            <WpfPlot Name="audioPlot" Margin="0,166,496,0" VerticalAlignment="Top" Grid.Column="0" Grid.ColumnSpan="2" Height="222"/>
+            <WpfPlot Name="energyPlot" Margin="228,74,-7,0" VerticalAlignment="Top" Height="222" Grid.Column="1"/>
+            <WpfPlot Name="nksPlot" Margin="228,287,-8,0" Grid.Column="1" Height="222" VerticalAlignment="Top"/>
+            <Label Margin="555,13,89,0" VerticalAlignment="Top" Content="segments" Grid.Column="1"/>
+            <Label Margin="533,42,111,0" Height="23" VerticalAlignment="Top" Content="Treshold:" Grid.Column="1"/>
+            <TextBox x:Name="txtboxTreshold" Margin="624,47,20,0" VerticalAlignment="Top" TextChanged="txtboxTreshold_TextChanged" Grid.Column="1"/>
+            <Label Margin="466,54,196,0" Height="27" VerticalAlignment="Top" Grid.Column="1" Content="Energy"/>
+            <Label Margin="475,277,202,0" Height="26" VerticalAlignment="Top" Grid.Column="1" Content="NKS"/>
+        </Grid>
+    </Border>
+
+</Window>
